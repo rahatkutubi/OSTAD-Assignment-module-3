@@ -1,0 +1,12 @@
+# deploy.ps1
+cd ""
+
+git pull origin main
+npm install
+
+try {
+    pm2 restart node-app
+
+} catch {
+   pm2 start "./src/server.js" --name node-app
+}
